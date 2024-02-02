@@ -1,22 +1,16 @@
-import express, { Application, Request, Response } from "express";
+import express, { Application } from 'express'
+import cors from 'cors'
+import router from './app/routes'
 
-const app: Application = express();
+const app: Application = express()
 
 //parsers
 
-app.use(express.json());
-app.use(express.text());
+app.use(express.json())
+app.use(express.text())
+app.use(cors()) // Use the 'cors' middleware
 
-app.get("/", (req, res) => {
-  res.send("Hello vai df d vai!");
-});
+//application routes
+app.use('/api/v1', router)
 
-app.post("/", (req: Request, res: Response) => {
-  console.log(req.body);
-
-  res.json({
-    message: "fukc",
-  });
-});
-
-export default app;
+export default app
