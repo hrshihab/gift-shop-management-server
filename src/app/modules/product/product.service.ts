@@ -1,15 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { TProduct } from './product.interface'
 import { Product } from './product.model'
-import { generatedProductId } from './product.utils'
 import { sendImageToCloudinary } from '../../utils/sendImageToCloudinary'
+import QueryBuilder from '../../builder/QueryBuilder'
 
 const createProductIntoDB = async (file: any, payload: TProduct) => {
   try {
-    //console.log(await generatedProductId())
-    payload.id = await generatedProductId()
-
-    const imageName = `product-${payload.id}.jpg`
+    const imageName = `product-${payload.name}.jpg`
     const path = file?.path
     //send image to cloudinary
     const response = await sendImageToCloudinary(imageName, path)
@@ -27,4 +24,16 @@ const createProductIntoDB = async (file: any, payload: TProduct) => {
   }
 }
 
-export const ProductService = { createProductIntoDB }
+const getAllProductFromDB = async (query: Record<string, unknown>) => {
+  const productQuery = new QueryBuilder(Product.find(), query)
+    .search(['name', 'theme'])
+    .filter()
+    .sort()
+    .paginate()
+    .fields()
+
+  const result = await productQuery.modelQuery
+  return result
+}
+
+export const ProductService = { createProductIntoDB, getAllProductFromDB }

@@ -3,11 +3,6 @@ import { TProduct } from './product.interface'
 
 const productSchema = new Schema<TProduct>(
   {
-    id: {
-      type: String,
-      required: true,
-      unique: true,
-    },
     name: {
       type: String,
       required: true,
@@ -27,13 +22,15 @@ const productSchema = new Schema<TProduct>(
     },
     recipient: {
       type: String,
+      required: true,
     },
+
     category: {
       type: String,
       required: true,
     },
     theme: {
-      type: [String],
+      type: String,
       required: true,
     },
     brand: {
@@ -41,11 +38,11 @@ const productSchema = new Schema<TProduct>(
       required: true,
     },
     material: {
-      type: [String],
+      type: String,
       required: true,
     },
     color: {
-      type: [String],
+      type: String,
     },
     productImage: {
       type: String,

@@ -17,6 +17,11 @@ export const sendImageToCloudinary = (imageName: string, path: string) => {
       { public_id: imageName },
       function (error, result) {
         if (error) {
+          console.log(
+            'Error in sending image to cloudinary',
+            error.message,
+            error.stack
+          )
           reject(error)
         }
         resolve(result)

@@ -1,15 +1,14 @@
 export type TProduct = {
-  id: string // generated
   name: string
   price: number
   quantity: number
+  recipient: string
   occasion: string
-  recipient?: string
   category: string
-  theme: string[]
+  theme: string
   brand: string
-  material: string[] // assuming material is an array of strings
-  color?: string[]
+  material: string // assuming material is an array of strings
+  color?: string
   productImage?: string
   isDeleted?: boolean
 }
