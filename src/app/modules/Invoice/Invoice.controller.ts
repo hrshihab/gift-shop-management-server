@@ -4,7 +4,7 @@ import sendResponse from '../../utils/sendResponse';
 import { InvoiceServices } from './Invoice.service';
 
 const createInvoice = catchAsync(async (req, res) => {
-    console.log('res', req.body);
+    //console.log('res', req.body);
     const result = await InvoiceServices.createSaleInfoIntoDB(req.body);
     sendResponse(res, {
         statusCode: httpStatus.OK,
