@@ -25,7 +25,8 @@ const productSchema = new Schema<TProduct>(
         },
         imageURL: {
             type: String,
-            default: '',
+            default:
+                'https://cityfurnish.com/blog/wp-content/uploads/2023/07/wrapped-gift-box-with-shiny-gold-decoration-generated-by-ai-min-1200x900.jpg',
         },
         category: {
             type: [Schema.Types.ObjectId],
